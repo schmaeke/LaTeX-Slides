@@ -1,0 +1,53 @@
+% ---[ START FRAME ] --------------------------------------------------------- %
+\begin{frame}{Small-Strain Elasticity}
+
+	\begin{columns}
+		\column{0.6\textwidth}
+			\vspace*{-0.2cm}
+			\begin{itemize}
+				\item Equilibrium conditions
+						\begin{subequations}
+							\begin{align}
+								-\nabla \cdot \boldsymbol{\sigma} &= \boldsymbol{p} &&\forall \boldsymbol{x} \in \Omega \\
+								\boldsymbol{\sigma} \cdot \boldsymbol{n} &= \boldsymbol{t} &&\forall \boldsymbol{x} \in \Gamma_N \\
+								\boldsymbol{u} &= \overline{\boldsymbol{u}} &&\forall \boldsymbol{x} \in \Gamma_D
+							\end{align}
+						\end{subequations}
+
+				\onslide<2->{
+				\item Linear strain-displacement relation
+					\begin{equation}
+						\boldsymbol{\varepsilon} = \frac{1}{2} \left( \nabla \boldsymbol{u} + \nabla \boldsymbol{u}^T \right)
+					\end{equation}}
+
+				\onslide<3->{
+				\item Constitutive equation
+					\begin{equation}
+						\boldsymbol{\sigma} = \boldsymbol{C} : \boldsymbol{\varepsilon}
+					\end{equation}}
+
+				\onslide<4->{
+				\item Resulting weighted-residual form
+					\begin{equation}
+						\begin{aligned}
+							\int \limits_\Omega \boldsymbol{\varepsilon}(\boldsymbol{v}) : \boldsymbol{C} : \boldsymbol{\varepsilon}(\boldsymbol{u}_h) \,\textrm{d}\Omega
+							&= \int \limits_\Omega \boldsymbol{v}\ \boldsymbol{p}\ \textrm{d}\Omega
+							+ \int \limits_{\Gamma_N} \boldsymbol{v}\ \boldsymbol{t}\ \textrm{d}\partial\Omega
+							+ \int \limits_{\Gamma_D} \boldsymbol{v}\ \boldsymbol{t}\ \textrm{d}\partial\Omega \\
+							\land \quad \boldsymbol{u}_h &= \overline{\boldsymbol{u}} \quad \forall \boldsymbol{x} \in \Gamma_D \\
+						\end{aligned}
+					\end{equation}}
+
+			\end{itemize}
+
+		\column{0.35\textwidth}
+
+		\begin{figure}
+			\begin{center}
+				\resizebox{!}{6.5cm}{\input{content/example/images/deformation_problem.tex}}
+				\caption{Initial $\Omega$ and deformed $\hat{\Omega}$ configuration of solid-mechanics problem.}
+			\end{center}
+		\end{figure}
+	\end{columns}
+\end{frame}
+% ---[ END FRAME ] ----------------------------------------------------------- %

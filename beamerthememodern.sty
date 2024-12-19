@@ -1,0 +1,294 @@
+% Packages......................................................................
+\RequirePackage[T1]{fontenc}
+\RequirePackage{CharisSIL}
+\RequirePackage{paratype}
+\RequirePackage[notext]{stix}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{amsfonts}
+\RequirePackage{xfrac}
+\RequirePackage{tikz}
+\RequirePackage{pgfplots}
+\RequirePackage{caption}
+\RequirePackage{hyperref}
+\RequirePackage{pifont}
+\RequirePackage{fontawesome5}
+\RequirePackage{tabularx}
+\usetikzlibrary{fadings}
+\usetikzlibrary{patterns}
+
+\usefonttheme{professionalfonts}
+
+
+% Colors........................................................................
+\definecolor{foreground}{HTML}{000000}
+\definecolor{highlightedForeground}{HTML}{003DA0}
+
+\definecolor{background}{HTML}{FFFFFF}
+\definecolor{highlightedBackground}{HTML}{ECF1F9}
+
+% From velura.nvim - https://github.com/schmaeke/velura.nvim
+\definecolor{red0}{HTML}{7F172B}
+\definecolor{red1}{HTML}{A11E35}
+\definecolor{red2}{HTML}{C5233F}
+\definecolor{red3}{HTML}{DC2C48}
+\definecolor{red4}{HTML}{E94C66}
+\definecolor{red5}{HTML}{EE738D}
+\definecolor{red6}{HTML}{F4A1AB}
+\colorlet{red}{red1}
+
+\definecolor{yellow0}{HTML}{8F7422}
+\definecolor{yellow1}{HTML}{B3962B}
+\definecolor{yellow2}{HTML}{E2BB36}
+\definecolor{yellow3}{HTML}{E9C946}
+\definecolor{yellow4}{HTML}{F3D870}
+\definecolor{yellow5}{HTML}{F5DF8E}
+\definecolor{yellow6}{HTML}{F8E1A8}
+\colorlet{yellow}{yellow1}
+
+\definecolor{green0}{HTML}{1A6C2E}
+\definecolor{green1}{HTML}{22863A}
+\definecolor{green2}{HTML}{29A245}
+\definecolor{green3}{HTML}{33B34E}
+\definecolor{green4}{HTML}{42CC60}
+\definecolor{green5}{HTML}{75D28D}
+\definecolor{green6}{HTML}{A8D8B0}
+\colorlet{green}{green1}
+
+\definecolor{cyan0}{HTML}{356A63}
+\definecolor{cyan1}{HTML}{478B80}
+\definecolor{cyan2}{HTML}{58AA9A}
+\definecolor{cyan3}{HTML}{66B8A7}
+\definecolor{cyan4}{HTML}{80C9BC}
+\definecolor{cyan5}{HTML}{99D5CE}
+\definecolor{cyan6}{HTML}{B3E3E0}
+\colorlet{cyan}{cyan1}
+
+\definecolor{blue0}{HTML}{1A5A91}
+\definecolor{blue1}{HTML}{2272B3}
+\definecolor{blue2}{HTML}{2A8AD9}
+\definecolor{blue3}{HTML}{3C9BE1}
+\definecolor{blue4}{HTML}{5FB2F0}
+\definecolor{blue5}{HTML}{84C0F2}
+\definecolor{blue6}{HTML}{A8D1F4}
+\colorlet{blue}{blue1}
+
+\definecolor{purple0}{HTML}{641F8A}
+\definecolor{purple1}{HTML}{812FB4}
+\definecolor{purple2}{HTML}{9D3BD6}
+\definecolor{purple3}{HTML}{A948E0}
+\definecolor{purple4}{HTML}{BB6EF1}
+\definecolor{purple5}{HTML}{D098F5}
+\definecolor{purple6}{HTML}{E0B3E8}
+\colorlet{purple}{purple1}
+
+
+% highlightedForeground colors
+\setbeamercolor{section in toc}{fg=black}
+\setbeamercolor{alerted text}{fg=red!20!black}
+
+\setbeamercolor*{palette highlightedForeground}{fg = black}
+\setbeamercolor*{palette highlightedBackground}{fg = black}
+\setbeamercolor*{palette tertiary}{bg = black}
+\setbeamercolor*{palette quaternary}{fg = black}
+
+\setbeamercolor{titlelike}{fg = highlightedForeground}
+\setbeamercolor{frametitle}{fg = highlightedForeground}
+\setbeamercolor{footline}{fg = highlightedForeground}
+
+\setbeamercolor*{separation line}{}
+\setbeamercolor*{fine separation line}{}
+
+\setbeamercolor{caption name}{fg = highlightedForeground}
+
+
+% Geoemetry.....................................................................
+
+% Slide margins
+\setbeamersize{text margin left = 0.5cm, text margin right = 0.5cm}
+
+% Remove navigation
+\setbeamertemplate{navigation symbols}{}
+
+% Headline style
+\setbeamertemplate{headline}{
+
+}
+
+% Title style
+\setbeamertemplate{frametitle}{
+	\vskip 0.3cm
+	\textbf{\fontsize{13pt}{13pt}\selectfont\insertframetitle}%
+}
+
+
+% Footline
+\def \footmargin{0.2cm}
+\def \footbarheight{0.4cm}
+\setbeamertemplate{footline}{
+	\begin{tikzpicture}[remember picture, overlay]
+    \fill[highlightedForeground] (current page.south west) rectangle ++(\paperwidth, {\footbarheight + 0.6mm});
+    \draw[highlightedBackground, line width = 0.5mm, densely dashed] (current page.south west) ++(0, \footbarheight) -- ++(\paperwidth, 0);
+		\node[highlightedBackground, right, shift = ({\footmargin, 0.425 * \footbarheight})] at (current page.south west) {
+			\strut
+			\faUser\enspace\insertauthor
+			\enspace\enspace
+			\faCalendar*\enspace\insertdate
+			\enspace\enspace
+			\faBook\enspace\insertsubtitle
+		};
+		\node[highlightedBackground, left, shift = ({-\footmargin, 0.425 * \footbarheight})] at (current page.south east) {
+			\strut\iflanguage{ngerman}{Folie}{Slide}\enspace\textbf{\insertframenumber}\enspace \iflanguage{ngerman}{von}{of}\enspace\textbf{\inserttotalframenumber}
+		};
+	\end{tikzpicture}
+}
+
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamertemplate{enumerate items}[default]
+
+
+% Lists.........................................................................
+\setbeamercolor{itemize item}{fg = highlightedForeground}
+\setbeamercolor{itemize subitem}{fg = highlightedForeground}
+\setbeamercolor{itemize subsubitem}{fg = highlightedForeground}
+
+\setbeamertemplate{itemize item}{\small\faChevronCircleRight}
+\setbeamertemplate{itemize subitem}{\textbf{--}}
+\setbeamertemplate{itemize subsubitem}{\textbf{-}}
+
+
+% TOC...........................................................................
+\setbeamertemplate{section in toc}{\large\color{highlightedForeground}\textbf{\inserttocsection}}
+\setbeamertemplate{subsection in toc}{\color{black}\enspace\ding{105}\enspace\inserttocsubsection\\}
+
+
+% REFERENCES....................................................................
+\setbeamercolor{bibliography item}{fg = black}
+\setbeamercolor{bibliography entry author}{fg = highlightedForeground}
+\setbeamercolor{bibliography entry title}{fg = black}
+\setbeamercolor{bibliography entry location}{fg = highlightedForeground}
+\setbeamercolor{bibliography entry note}{fg = black}
+\setbeamertemplate{bibliography item}{\color{highlightedForeground}\ding{125}}
+
+
+% CAPTION.......................................................................
+\captionsetup{
+  labelfont={bf, small},
+  font={small},
+  format=hang,
+  justification=raggedright
+}
+
+
+% HYPERREF......................................................................
+\makeatletter
+\hypersetup{
+	pdftitle = {\insertauthor - \inserttitle},
+	pdfsubject = {\insertsubtitle},
+	pdfauthor = {\insertauthor},
+	colorlinks = true,
+	allcolors = highlightedForeground,
+}
+
+\newcommand{\authormail}[1]{\def\insertauthormail{#1}}
+
+% TITLE.........................................................................
+\setbeamertemplate{title page}{
+	\makeatletter
+	\makebox[\textwidth][c]
+	{
+		\begin{tikzpicture}
+			\node[minimum width=\paperwidth, minimum height=\paperheight, anchor=north west] (a) {};
+      \fill[highlightedForeground] (a.south west) rectangle (a.north east);
+      \clip (a.south west) rectangle (a.north east);
+
+      % circles
+      \fill[highlightedBackground] (a.south west) circle (0.6\paperheight);
+      \draw[highlightedBackground, densely dashed, line width = 0.5mm] (a.south west) circle (0.61\paperheight);
+      \fill[highlightedBackground] (a.north east) circle (0.3\paperheight);
+      \draw[highlightedBackground, densely dashed, line width = 0.5mm] (a.north east) circle (0.31\paperheight);
+
+      % title
+      \node[right, inner sep = 0, shift = {(5mm, -0.2\paperheight)}, highlightedBackground] at (a.north west) {
+        \begin{minipage}{0.7\paperwidth}
+          \begin{flushleft}
+            {\bfseries\Huge\inserttitle} \\[1mm]
+            \insertsubtitle
+          \end{flushleft}
+        \end{minipage}
+      };
+
+      % other information
+      \node[above left, inner sep = 0, shift = {(-5mm, 5mm)}, highlightedBackground] at (a.south east) {
+        \begin{tabular}{r c}
+          \insertinstitute & \faLandmark \\[1mm]
+          \insertauthor & \faUser \\[1mm]
+          \insertauthormail & \faEnvelope \\[1mm]
+          \insertdate & \faCalendar* \\[1mm]
+        \end{tabular}
+      };
+
+		\end{tikzpicture}
+	}
+}
+
+% PGFPLOTS color lists
+\pgfplotscreateplotcyclelist{veluraColorList}{
+	red \\
+	yellow \\
+	green \\
+	cyan \\
+	blue \\
+	purple \\
+%
+	red, densely dashed \\
+	yellow, densely dashed \\
+	green, densely dashed \\
+	cyan, densely dashed \\
+	blue, densely dashed \\
+	purple, densely dashed \\
+%
+	red,    densely dotted \\
+	yellow,  densely dotted \\
+	green,   densely dotted \\
+	cyan, densely dotted \\
+	blue, densely dotted \\
+	purple, densely dotted \\
+%
+	red,    densely dash dot \\
+	yellow,  densely dash dot \\
+	green,   densely dash dot \\
+	cyan, densely dash dot \\
+	blue, densely dash dot \\
+	purple, densely dash dot \\
+}
+
+\pgfplotscreateplotcyclelist{veluraColorListMark}{
+	red,    mark = square*,   mark size = 1.0pt, mark options = {fill = red!50!white, solid} \\
+	yellow,  mark = *,         mark size = 1.0pt, mark options = {fill = yellow!50!white, solid} \\
+	green,   mark = triangle*, mark size = 1.0pt, mark options = {fill = green!50!white, solid} \\
+	cyan, mark = diamond*,  mark size = 1.0pt, mark options = {fill = cyan!50!white, solid} \\
+	blue, mark = pentagon*, mark size = 1.0pt, mark options = {fill = blue!50!white, solid} \\
+	purple, mark = oplus*, mark size = 1.0pt, mark options = {fill = purple!50!white, solid} \\
+%
+	red,    mark = square*,   mark size = 1.0pt, mark options = {fill = red!50!white, solid}, densely dashed \\
+	yellow,  mark = *,         mark size = 1.0pt, mark options = {fill = yellow!50!white, solid}, densely dashed \\
+	green,   mark = triangle*, mark size = 1.0pt, mark options = {fill = green!50!white, solid}, densely dashed \\
+	cyan, mark = diamond*,  mark size = 1.0pt, mark options = {fill = cyan!50!white, solid}, densely dashed \\
+	blue, mark = pentagon*, mark size = 1.0pt, mark options = {fill = blue!50!white, solid}, densely dashed \\
+	purple, mark = oplus*, mark size = 1.0pt, mark options = {fill = purple!50!white, solid}, densely dashed \\
+%
+	red,    mark = square*,   mark size = 1.0pt, mark options = {fill = red!50!white, solid}, densely dotted \\
+	yellow,  mark = *,         mark size = 1.0pt, mark options = {fill = yellow!50!white, solid}, densely dotted \\
+	green,   mark = triangle*, mark size = 1.0pt, mark options = {fill = green!50!white, solid}, densely dotted \\
+	cyan, mark = diamond*,  mark size = 1.0pt, mark options = {fill = cyan!50!white, solid}, densely dotted \\
+	blue, mark = pentagon*, mark size = 1.0pt, mark options = {fill = blue!50!white, solid}, densely dotted \\
+	purple, mark = oplus*, mark size = 1.0pt, mark options = {fill = purple!50!white, solid}, densely dotted \\
+%
+	red,    mark = square*,   mark size = 1.0pt, mark options = {fill = red!50!white, solid}, densely dash dot \\
+	yellow,  mark = *,         mark size = 1.0pt, mark options = {fill = yellow!50!white, solid}, densely dash dot \\
+	green,   mark = triangle*, mark size = 1.0pt, mark options = {fill = green!50!white, solid}, densely dash dot \\
+	cyan, mark = diamond*,  mark size = 1.0pt, mark options = {fill = cyan!50!white, solid}, densely dash dot \\
+	blue, mark = pentagon*, mark size = 1.0pt, mark options = {fill = blue!50!white, solid}, densely dash dot \\
+	purple, mark = oplus*, mark size = 1.0pt, mark options = {fill = purple!50!white, solid}, densely dash dot \\
+}

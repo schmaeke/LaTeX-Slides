@@ -1,0 +1,46 @@
+% ---[ DOCUMENTCLASS ] ------------------------------------------------------- %
+\documentclass[8pt, handout, aspectratio = 1510]{beamer}
+
+% ---[ BEAMER THEME ] -------------------------------------------------------- %
+\usetheme{modern}
+\setbeameroption{hide notes}
+
+% ---[ DOCUMENT INFO ] ------------------------------------------------------- %
+\title{Title of This Very Cool Presentation}
+\subtitle{Important People Conference 2024}
+\author{\textbf{Jimmy Brown}, Jason Miller}
+\authormail{jimmy.brown@mail-provider.com}
+\institute{Fancy University Somewhere, FUS\\ Institute for Computational Mechanics}
+\date{\today}
+
+% ---[ PACKAGES ] ------------------------------------------------------------ %
+\usepackage[english]{babel}
+
+% ---[ TikZ LIBRARIES ] ------------------------------------------------------ %
+\usetikzlibrary{decorations.markings}%
+\usetikzlibrary{decorations}%
+\usetikzlibrary{decorations}%
+
+% ---[ COLORS ] -------------------------------------------------------------- %
+\definecolor{body}{RGB}{200, 205, 200}%
+
+% ---[ START DOCUMENT ] ------------------------------------------------------ %
+\begin{document}
+
+	\begin{frame}[plain]
+		\maketitle
+	\end{frame}
+
+	\section{Example}
+  \include{content/example/main.tex}
+
+  % ---[ START FRAME ] --------------------------------------------------------- %
+  \begin{frame}[allowframebreaks]{Literature}
+    \nocite{*}
+    \bibliographystyle{apalike}
+    \bibliography{ references/references.bib }
+  \end{frame}
+  % ---[ END FRAME ] ----------------------------------------------------------- %
+
+\end{document}
+% ---[ END DOCUMENT ] -------------------------------------------------------- %
